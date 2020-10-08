@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<head>
+	 <meta charset="UTF-8">
+<style type="text/css">
+	body{
+background-color:#B22222;
+background-image: url(satiricus.png);
+	/*ackground-size: 100%  100%;*/
+	background-repeat: no-repeat;
+	}
+nav{
+  display:inline-block;
+  margin:160px auto 45px;
+  background-color:white;
+  box-shadow:0 1px 1px #ccc;
+  border-radius:2px;
+  margin-left: 140px;
+}
+
+nav a{
+  display:inline-block;
+  padding: 18px 30px;
+  color: black !important;
+  font-weight:bold;
+  font-size:16px;
+  text-decoration:none !important;
+  line-height:1;
+  text-transform: uppercase;
+  background-color:transparent;
+   font-family: "Fira Mono",monospace; 
+
+  -webkit-transition:background-color 0.25s;
+  -moz-transition:background-color 0.25s;
+  transition:background-color 0.25s;
+}
+
+nav a:hover:not(.active) {
+  background-color: #A9A9A9;
+}
+
+.active {
+  background-color:#F0E68C;
+}
+  .apl{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 70%;
+        margin: auto;
+        text-align: center;
+        background: linear-gradient(to top , white,lightgrey);
+        padding: 20px;
+        font-family: fantasy;
+        border-radius: 10px;
+        box-shadow: 2px 2px 4px black;
+        
+    }
+</style>
+	</head>
+	<body>
+
+
+   <nav class="{{active}}" ng-click="$event.preventDefault()">
+
+      <!-- When a link in the menu is clicked, we set the active variable -->
+
+      <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
+      <a href="#" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
+      <a href="#" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+       <a href="#" class="contacte" ng-click="active='contacte'">Contacte</a>
+       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+    </nav>
+
+
+   <div ng-app="myApp" ng-controller="myCtrl" class="apl">
+
+ <h2>Pentru a continua , trebuie să te autentifici!</h2>
+        <h3>Daca nu aveti un account inregistrativa! </h3>
+
+        <div ng-show="primaPagina" ng-init="primaPagina = true">
+        	 <button ng-click="Logare()"> Logare </button>
+          <button ng-click="Inregistrare()"> Inregistrare </button>
+ 
+</div>
+           <div ng-show="showLogare" ng-init="showLogare = false; countLog = 0">
+                <p> <b> Logarea: </b> </p>
+                <form>
+                   Login: <input type="text" ng-model="user"> </br> </br>
+                   Parola: <input type="password" ng-model="pass"> </br> </br>
+                   <p ng-bind="errorLog">{{errorLog}}</p>
+                   <button ng-click="autentificare()" ng-disabled="user == null || pass == null"> Autentificare </button>
+                   <input type="button" name="sterge" onclick="reset();"  value="Șterge">
+                  
+               </form>
+
+           </div>
+
+
+<div ng-show="showInregistrare" ng-init="showInregistrare = false; countInr = 0">
+            <p> <b> Inregistrarea: </b> </p>
+            <form>
+               Login: <input type="text" ng-model="user1" id="input" name="input"> </br> </br>
+               Parola: <input type="password" ng-model="pass1"> </br> </br>
+               <p ng-bind="error">{{error}}</p>
+               <button ng-click="confirmaInregistrare()" ng-disabled="user1 == null || pass1 == null"> Confirma </button>
+               <input type="button" name="sterge" onclick="reset();"  value="Șterge">
+           </form>
+       </div>
+
+       <div ng-hide="avertizare" ng-init="avertizare = true">
+       </br>
+       <p> Login sau parola gresita! </p>
+   </div>
+
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+
+    //Logare
+    $scope.Logare = function() {
+
+       $scope.showLogare = true;
+       $scope.showInregistrare = false;  
+ }
+
+
+ //Inregistrare
+    $scope.Inregistrare = function() {
+
+       $scope.showLogare = false;
+       $scope.showInregistrare = true;
+
+   }
+
+
+   var userNou;
+   var parolaNoua;
+
+    //Confirma date
+    $scope.confirmaInregistrare = function() {
+
+      $scope.regex = "[a-zA-Z0-9]{4,14}";
+      $scope.error = "";
+    	if($scope.user1.match($scope.regex) && $scope.pass1.match($scope.regex))
+        {
+        	userNou = $scope.user1;
+          parolaNoua = $scope.pass1;
+
+          $scope.showLogare = true;
+          $scope.showInregistrare = false;
+      }
+      else
+      {
+        $scope.error = "Date nevalide";
+      }
+  }
+
+	//Autetinficare
+    $scope.autentificare = function() {
+       $scope.reg = "[a-zA-Z0-9]{4,14}";
+      $scope.errorLog = "";
+      if($scope.user.match($scope.reg) && $scope.pass.match($scope.reg))
+      {
+    	if($scope.user == userNou && $scope.pass == parolaNoua)
+        {
+        	$scope.primaPagina = false;
+          $scope.showPage = true;
+          $scope.avertizare = true;
+          $scope.showLogare = false;
+          window.location='individual.html';
+      }
+      else 
+       $scope.avertizare = false;
+     }
+     else{
+      $scope.showLogare = true;
+      $scope.errorLog = "Date nevalide";
+     }
+}
+    $scope.iesire = function() {
+    	$scope.cost = 0;
+        $scope.s1 = false;
+        $scope.s2 = false;
+        $scope.s3 = false;
+        $scope.s4 = false;
+        $scope.t1 = false;
+        $scope.t2 = false;
+        $scope.t3 = false;
+        $scope.t4 = false;
+        $scope.primaPagina = true;
+        $scope.showPage = false;
+    }
+
+});
+
+       </script>  
+	</body>
+	</html>
