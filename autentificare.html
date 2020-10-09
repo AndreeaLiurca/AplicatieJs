@@ -6,10 +6,12 @@
 <style type="text/css">
 	body{
 background-color:#B22222;
-background-image: url(satiricus.png);
+background-image: url(satiricus.png),url(7.png);
 	/*ackground-size: 100%  100%;*/
-	background-repeat: no-repeat;
-	}
+	background-repeat: no-repeat, no-repeat;
+background-position:top center, bottom center;
+  height:720px;
+  }
 nav{
   display:inline-block;
   margin:160px auto 45px;
@@ -44,22 +46,58 @@ nav a:hover:not(.active) {
   background-color:#F0E68C;
 }
   .apl{
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 70%;
         margin: auto;
         text-align: center;
-        background: linear-gradient(to top , white,lightgrey);
+        background-image: url(3.jpg);
+        background-size: 1000px,900px;
+        background-image:no-repeat;
         padding: 20px;
         font-family: fantasy;
         border-radius: 10px;
         box-shadow: 2px 2px 4px black;
-        
-    }
+        }
+
+
+.modal-overlay {
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000;
+  opacity: 0.8;
+}
+.modal-background {
+  z-index:10000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+
+}
+.modal-content {
+  padding:10px;
+  text-align: center;
+}
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
 </style>
 	</head>
-	<body>
+	<body >
 
 
    <nav class="{{active}}" ng-click="$event.preventDefault()">
@@ -67,18 +105,17 @@ nav a:hover:not(.active) {
       <!-- When a link in the menu is clicked, we set the active variable -->
 
       <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
-      <a href="#" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
-      <a href="#" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
-       <a href="#" class="contacte" ng-click="active='contacte'">Contacte</a>
+      <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+       <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
        <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
        <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
     </nav>
+<div ng-app="myApp" >
+   <div ng-controller="myCtrl" class="apl" >
 
-
-   <div ng-app="myApp" ng-controller="myCtrl" class="apl">
-
- <h2>Pentru a continua , trebuie să te autentifici!</h2>
-        <h3>Daca nu aveti un account inregistrativa! </h3>
+ <h2>Pentru a continua, trebuie să vă autentificați!</h2>
+        <h3>Daca nu aveti un account, înregistrați-vă! </h3>
 
         <div ng-show="primaPagina" ng-init="primaPagina = true">
         	 <button ng-click="Logare()"> Logare </button>
@@ -91,18 +128,20 @@ nav a:hover:not(.active) {
                    Login: <input type="text" ng-model="user"> </br> </br>
                    Parola: <input type="password" ng-model="pass"> </br> </br>
                    <p ng-bind="errorLog">{{errorLog}}</p>
-                   <button ng-click="autentificare()" ng-disabled="user == null || pass == null"> Autentificare </button>
+                   <button ng-click="toggleModal()" ng-disabled="user == null || pass == null"> Autentificare </button>
                    <input type="button" name="sterge" onclick="reset();"  value="Șterge">
                   
                </form>
-
+      <modal-window show='modalShown' width='300px' height='80px'>
+          <p ng-bind="errorLog">{{errorLog}}</p>
+        </modal-window>
            </div>
 
 
 <div ng-show="showInregistrare" ng-init="showInregistrare = false; countInr = 0">
             <p> <b> Inregistrarea: </b> </p>
             <form>
-               Login: <input type="text" ng-model="user1" id="input" name="input"> </br> </br>
+               Login: <input type="text" ng-model="user1 " id="input" name="input"> </br> </br>
                Parola: <input type="password" ng-model="pass1"> </br> </br>
                <p ng-bind="error">{{error}}</p>
                <button ng-click="confirmaInregistrare()" ng-disabled="user1 == null || pass1 == null"> Confirma </button>
@@ -114,8 +153,8 @@ nav a:hover:not(.active) {
        </br>
        <p> Login sau parola gresita! </p>
    </div>
-
 </div>
+
 <script>
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) {
@@ -160,8 +199,10 @@ nav a:hover:not(.active) {
   }
 
 	//Autetinficare
-    $scope.autentificare = function() {
-       $scope.reg = "[a-zA-Z0-9]{4,14}";
+  $scope.modalShown = false;
+    $scope.toggleModal = function() {
+      
+   $scope.reg = "[a-zA-Z0-9]{4,14}";
       $scope.errorLog = "";
       if($scope.user.match($scope.reg) && $scope.pass.match($scope.reg))
       {
@@ -179,6 +220,7 @@ nav a:hover:not(.active) {
      else{
       $scope.showLogare = true;
       $scope.errorLog = "Date nevalide";
+      $scope.modalShown = !$scope.modalShown;
      }
 }
     $scope.iesire = function() {
@@ -197,6 +239,36 @@ nav a:hover:not(.active) {
 
 });
 
-       </script>  
+
+app.directive('modalWindow', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with template
+    transclude: true, // To use custom content
+    link: function(scope, element, attrs) {
+
+      scope.windowStyle = {};
+
+      if (attrs.width) {
+        scope.windowStyle.width = attrs.width;
+      }
+      if (attrs.height) {
+        scope.windowStyle.height = attrs.height;
+      }
+
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    template: "<div ng-show='show'><div class='modal-overlay' ng-click='hideModal()'></div><div class='modal-background' ng-style='windowStyle'><div class='modal-close' ng-click='hideModal()'>X</div><div class='modal-content' ng-transclude></div></div></div>"
+  };
+});
+
+
+
+</script>  
 	</body>
 	</html>

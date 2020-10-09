@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body{
+background-color:#B22222;
+background-image: url(satiricus.png);
+	/*ackground-size: 100%  100%;*/
+	background-repeat: no-repeat;
+  background-position:top center
+	}
+
+
+nav{
+  display:inline-block;
+  margin:160px auto 45px;
+  background-color:white;
+  box-shadow:0 1px 1px #ccc;
+  border-radius:2px;
+  margin-left: 140px;
+}
+
+nav a{
+  display:inline-block;
+  padding: 18px 30px;
+  color: black !important;
+  font-weight:bold;
+  font-size:16px;
+  text-decoration:none !important;
+  line-height:1;
+  text-transform: uppercase;
+  background-color:transparent;
+   font-family: "Fira Mono",monospace; 
+
+  -webkit-transition:background-color 0.25s;
+  -moz-transition:background-color 0.25s;
+  transition:background-color 0.25s;
+}
+
+nav a:hover:not(.active) {
+  background-color: #A9A9A9;
+}
+
+.active {
+  background-color:#F0E68C;
+}
+		b{
+			color: yellow;	
+			font-family: "Fira Mono",monospace; 
+			font-size: 15px;
+		}
+		h3{
+			font-size: 15px;
+			font-family: "Fira Mono",monospace; 
+		}
+	       p{
+	 font-weight: bold;
+}
+
+fieldset{
+
+	margin: 0 auto;
+	background-color: #FFC0CB;
+border: solid;
+width: 30%;
+display:block;
+color: black;
+}
+   #and{
+   	padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 12px;
+  cursor: pointer;
+    background-color: white;
+  color: black;
+  border: 2px solid #555555;
+   }
+iframe{
+	margin-top: 10px;
+}
+h1{
+	margin: 0 auto;
+	margin-left: 500px;
+margin-bottom: 20px;
+	}
+
+.imagine {
+	background-image: url(2.png);
+    height: 450px;
+}
+iframe{
+  margin-top: 138px;
+}
+h4{
+font-family: "DejaVu Sans Mono",monospace; 
+font-size: 20px;
+margin-left: 400px;
+color: #F0E68C;
+}
+h3{
+  font-family: "DejaVu Sans Mono",monospace; 
+font-size: 25px;
+margin-left: 500px;
+color: black;
+}
+</style>
+
+</head>
+
+
+<nav class="{{active}}" ng-click="$event.preventDefault()">
+
+      <!-- When a link in the menu is clicked, we set the active variable -->
+
+      <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
+      <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+       <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
+       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+    </nav>
+
+    <div class = "imagine" ng-app="myApp" ng-controller="myCtrl" ng-init = "adresa= {tara:'Republica Moldova',munc:'mun.Chisinau',str:'Mihai Eminescu 55',email:'satiricus@inbox.ru'}; marks = [069416078, +3733303890] ">  
+
+         <form name = "studentForm" novalidate>
+
+         	<h1>Părerea ta contează</h1>
+         	<fieldset>
+                  <p>Name:
+                  <input name = "firstname" type = "text" ng-model = "firstName" required>
+                     <span style = "color:black" ng-show = "studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+                        <span ng-show = "studentForm.firstname.$error.required">First Name is required.</span>
+                     </span>
+                  </p>
+              
+               <p>Email: 
+               <input name = "email" type = "email" ng-model = "email" length = "100" required>
+                     <span style = "color:black" ng-show = "studentForm.email.$dirty && studentForm.email.$invalid">
+                        <span ng-show = "studentForm.email.$error.required">Email is required.</span>
+                        <span ng-show = "studentForm.email.$error.email">Invalid email address.</span>
+                     </span>
+                  </p>
+               
+               <p>Mesaj:
+               	<textarea id="mesaj" name="mesage" rows="4" cols="30"></textarea>
+            </p>
+                 
+                     <button id="and" ng-click = "reset()">Reset</button>
+                
+                
+                     <button id= "and" ng-disabled = "studentForm.firstname.$dirty &&
+                        studentForm.firstname.$invalid || studentForm.email.$dirty &&
+                        studentForm.email.$invalid" ng-click="submit()">Submit</button>
+                  
+             
+					
+      </fieldset>
+         </form>
+     
+
+   
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2719.877404890127!2d28.835992315526003!3d47.02301137915023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97c36d43ac615%3A0x1e037d298a8e037!2z0KHQsNGC0LjRgNC40LrRg9GBINCY0L7QvSDQm9GD0LphINCa0LDRgNCw0LTQttC40LDQu9C1!5e0!3m2!1sru!2sus!4v1602228345847!5m2!1sru!2sus" width="1325" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      <h3> Date de contact:</h3>
+<h4> Adresa: {{adresa.tara + " " + adresa.munc + " " + adresa.str}}</h4>
+<h4>Email: {{adresa.email}}</h4>
+<h4>Telefon: {{marks[0]}}</h4>
+
+ </div>
+
+<!--<button 	 ng-click="myFunc()">Detalii despre Locatie ! </button>
+
+<div ng-show="showMe">
+    <h1>Detalii:</h1>
+    
+<h3>Republica Moldova, mun. Chişinău, str. Mihai Eminescu 55</h3>
+   <h3> Tel.: <b>Casa de bilete:</b> +373 22-20-28-90 / 069416078</h3>
+   <h3> Tel.: <b>Organizator spectacole:</b> +373 22-20-28-94 / 069368274 / 061171906 / 079748302 / 068808571</h3>
+   <h3> Tel.: <b>Contabilitate</b> +373 22-20-28-93, satiricus@inbox.ru</h3>
+    <h3>Fax: +372 22-22-61-40</h3>
+    <h3>E-mail: <b>satiricus@satiricus.md / satiricus@inbox.ru<b></h3>
+    <b>Facebook: https://www.facebook.com/satiricus.ionlucacaragiale <b>
+</div>-->
+</div>
+	<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.showMe = false;
+    $scope.myFunc = function() {
+        $scope.showMe = !$scope.showMe;
+    };
+
+    $scope.reset = function(){
+               $scope.firstName = "";
+               $scope.lastName = "";
+               $scope.email = "";
+            }
+            
+            $scope.reset();
+
+});
+
+</script>
+</body>
+</html>

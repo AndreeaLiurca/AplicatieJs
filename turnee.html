@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+	body{
+background-color:#B22222;
+background-image: url(satiricus.png),url(13.png);
+	/*ackground-size: 100%  100%;*/
+	background-repeat: no-repeat,no-repeat;
+  background-position:top center, bottom left;
+  height: 900px;
+	}
+
+
+nav{
+  display:inline-block;
+  margin:160px auto 45px;
+  background-color:white;
+  box-shadow:0 1px 1px #ccc;
+  border-radius:2px;
+  margin-left: 140px;
+}
+
+nav a{
+  display:inline-block;
+  padding: 18px 30px;
+  color: black !important;
+  font-weight:bold;
+  font-size:16px;
+  text-decoration:none !important;
+  line-height:1;
+  text-transform: uppercase;
+  background-color:transparent;
+   font-family: "Fira Mono",monospace; 
+
+  -webkit-transition:background-color 0.25s;
+  -moz-transition:background-color 0.25s;
+  transition:background-color 0.25s;
+}
+
+nav a:hover:not(.active) {
+  background-color: #A9A9A9;
+}
+
+.active {
+  background-color:#F0E68C;
+}
+h2{
+  font-family: "Harrington",fantasy;
+  margin-left: 300px;
+  font-size: 70px;
+  color: black;
+}
+
+.img1{
+  background-image: url(4.png); 
+  height: 500px;
+}
+p{
+   font-family: "Harrington",fantasy;
+ margin-left: 400px;
+ font-size: 30px;
+color: #40E0D0;
+}
+h1{
+ font-family: "Monaco",monospace;
+ margin-left: 400px;
+  font-size: 25px;
+  color: black;
+}
+h3{
+  font-family: "Monaco",monospace;
+ margin-left: 400px;
+  font-size: 25px;
+  color: black;
+}
+h4{
+margin-left: 400px;
+font-family: "Monaco",monospace;
+color:#696969;
+}
+
+</style>
+</head>
+<body>
+	<nav class="{{active}}" ng-click="$event.preventDefault()">
+
+      <!-- When a link in the menu is clicked, we set the active variable -->
+
+      <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
+      <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+       <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
+       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+    </nav>
+<div ng-app="myApp" ng-controller="myCtrl">
+<div class="img1">
+
+<h2>Festivaluri si Turnee</h2>
+
+<p>Selecteaza turneul important pentru tine:</p>
+
+<select style = "margin-left: 500px;border:solid; border-width: 40px; border-color:#ADD8E6"ng-model="selectedTurneu" ng-options="x.turneu for x in turneu">
+</select>
+
+<h1  ng-copy= "count = count+1 " ng-init = "count = 0 ">Turneul: {{selectedTurneu.turneu}}</h1>
+<h4>*The text has been copied {{count}} times.*</h4>
+
+<h3>Locul si data: {{selectedTurneu.locul}}</h3>
+
+</div>
+</div>  
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.turneu = [
+        {turneu: "Cerere in casatorie de Anton P.Cehov", locul : "Romania-Sibiu(iunie 2020)"},
+        {turneu : "Happy End de Jeroen Van Der Beg", locul : "Romania-Tulcea(octombrie 2019)"},
+        {turneu : "Hamlet de William Shakespeare", locul : "Romania(iunie,2019)"},
+        {turneu : "100 de minute de libertate de B.Saratean", locul : "Romania(iunie,2019)"},
+        {turneu : "Maestrul si Margareta", locul : "Romania(iunie,2018)"},
+        {turneu : "Angajare de clovn de M.Visneac", locul : "Romania-Sibiu(iunie,2017)"},
+        {turneu : "Made in Moldova de C.Cheianu", locul : "Belgia-Bruxelles(august,2016)"},
+        {turneu : "Made in Moldova de C.Cheianu", locul : "Olanda-Amsterdam(august,2016)"}
+        
+      
+    ];
+});
+</script>
+</body>
+</html>

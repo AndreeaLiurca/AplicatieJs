@@ -6,9 +6,10 @@
 <style type="text/css">
 	body{
 background-color:#B22222;
-background-image: url(satiricus.png);
-	/*ackground-size: 100%  100%;*/
-	background-repeat: no-repeat;
+background-image: url(satiricus.png),url(8.png),url(10.jpg);
+
+	background-repeat: no-repeat,no-repeat,no-repeat;
+  background-position:top center,bottom left, bottom right; 
 	}
 
 
@@ -45,14 +46,128 @@ nav a:hover:not(.active) {
 .active {
   background-color:#F0E68C;
 }
-table,tr,th{
-	margin-left: 900px;
+table,tr,th,td{
+  
+	margin-left: 320px;
 	font-family: "Fira Mono",monospace; 
 	font-size: 20px;
-	background-color: black;
-	color: white;
+	
+	color: black;
 	border:solid;
-	width:30%;
+	width:45%;
+  background-color:#66CDAA;
+}
+
+
+
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+h1{
+  margin-left: 360px;
+  font-family: "Papyrus",fantasy;
+  font-size: 60px; 
+  color: #00FF7F;
+}
+
+p{
+  margin-left: 460px;
+  font-family: "Papyrus",fantasy;
+  font-size: 50px;
+  color: yellow;
 }
 
 </style>
@@ -65,56 +180,117 @@ table,tr,th{
 
       <!-- When a link in the menu is clicked, we set the active variable -->
 
-      <a href="#" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
-      <a href="#" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
-      <a href="#" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
-       <a href="#" class="contacte" ng-click="active='contacte'">Contacte</a>
+      <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
+      <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+       <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
        <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
        <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
     </nav>
+<div ng-app = "myApp">
+<div ng-controller="myCtrl">
+  <h1>{{myHeader}}</h1>
+</div>
+<div class="slideshow-container">
 
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="sat3.jpg" style="width:100%">
+  
+</div>
 
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="sat1.jpg" style="width:100%">
+  
+</div>
 
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="sat2.jpg" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">4 / 3</div>
+  <img src="sat4.jpg" style="width:100%">
+ 
+</div>
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-<div ng-app="myApp" ng-controller="myCtrl">
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>  
+</div>
+
+<div ng-controller="myControler">
+<p>{{txt | limitTo : 16}}</p>
 <table id="tab" >
-<tr>
-<th>Afise spectacole</th>
-</tr>
-<tr ng-repeat="x in names">
-<td>{{x.name}}</td>
+<tr ng-repeat="x in names | orderBy:'names'">
+<td>{{x.name +',' + x.data}}</td>
 </tr>
 </table>
-
-<!--<button ng-click="myFunc()">Click Me!</button>
-
-<div ng-show="showMe">
-    <h1>Noutati:</h1>
-    <div>26.09.2020 Teatrul Național” Satiricus” I.L.Caragiale lansează un proiect de excepție Proiectul DECALOG </div>
-    <div>28.08.2020 Ordinul Republicii” domnului Alexandru GRECU,director general și regizor al Teatrului Național SATIRICUS</div>
-    <div>22.07.2020 Republica Moldova a pierdut un mare actor de teatru si film</div>
-</div>-->
-
 </div>
 </div>
 <script>
 var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-    $scope.names = [
-        {name:'10.10 Hotul de Dario FO'},
-       {name:'17.10 Doctor de femei de Georges Feydeau'},
-       {name:'24.10 Nunta de Anton P.Cehov'},
-         {name:'31.10 Ciuleandra de Liviu Rebreanu'}
-   
-        ];
-  /*  $scope.showMe = false;
-    $scope.myFunc = function() {
-        $scope.showMe = !$scope.showMe;
-    } */
+app.controller('myCtrl', function($scope, $timeout) {
+$scope.myHeader = "Bine ati venit!";
+  $timeout(function () {
+      $scope.myHeader = "Teatrul National Satiricus";
+  }, 2000)
+
 });
 
+app.controller('myControler', function($scope) {
+
+    $scope.names = [
+        {name:'Hotul de Dario FO',data: 'data : 10.10.2020'},
+       {name:'Doctor de femei de Georges Feydeau',data: 'data: 17.10.2020'},
+       {name:'Ciuleandra de Liviu Rebreanu',data: 'data: 01.11.2020'},
+       {name:'Nunta de Anton P.Cehov',data: 'data: 24.10.2020'}
+         ];
+
+$scope.txt = "Afise Spectacole Satiricus";
+
+   });
+      
 </script>
 
+
+<script type="text/javascript">
+  var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
 
 
 </body>

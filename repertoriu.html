@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+	body{
+background-color:#B22222;
+background-image: url(satiricus.png),url(11.png);
+	/*ackground-size: 100%  100%;*/
+	background-repeat: no-repeat,no-repeat;
+	background-position:top center,bottom right;
+	height: 980px;
+	}
+
+
+nav{
+  display:inline-block;
+  margin:160px auto 45px;
+  background-color:white;
+  box-shadow:0 1px 1px #ccc;
+  border-radius:2px;
+  margin-left: 140px;
+}
+
+nav a{
+  display:inline-block;
+  padding: 18px 30px;
+  color: black !important;
+  font-weight:bold;
+  font-size:16px;
+  text-decoration:none !important;
+  line-height:1;
+  text-transform: uppercase;
+  background-color:transparent;
+   font-family: "Fira Mono",monospace; 
+
+  -webkit-transition:background-color 0.25s;
+  -moz-transition:background-color 0.25s;
+  transition:background-color 0.25s;
+}
+
+nav a:hover:not(.active) {
+  background-color: #A9A9A9;
+}
+
+.active {
+  background-color:#F0E68C;
+}
+h1{
+	margin-left: 500px;
+	 font-family: "Harrington",fantasy;
+	 font-size: 70px;
+	 color: #008080;
+}
+
+table,td{
+  
+	font-family: "Fira Mono",monospace; 
+	font-size: 20px;
+	color: black;
+	width:45%;
+  
+}
+img{
+	border:solid;
+	border-color: white;
+}
+p {
+	font-size: 15px;
+	color: #F5DEB3;
+	font-family: "Brush Script Std",monospace;
+}
+
+</style>
+</head>
+<body>
+	<nav class="{{active}}" ng-click="$event.preventDefault()">
+
+      <!-- When a link in the menu is clicked, we set the active variable -->
+
+      <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
+      <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+       <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
+       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+    </nav>
+
+<div  ng-app="myApp">
+
+<w3-test-directive></w3-test-directive>
+
+</div>
+
+<table>
+	<tr>
+		<td align="center"><img src="sat5.jpg" height="170" width="240"> </td>
+		<td><b>Ce vraji a mai facut sotia mea? dupa John Tobias</b> <p>un spectacol de Mihai Panaitescu. <br>Premiera 01.11.2019</br></p></td>
+
+
+	</tr>
+<tr>
+<td align="center"><img src="sat6.jpg" height="170" width="240"> </td>
+		<td><b>Buna dimineata, Taticule! de Jean Poirret</b><p>un spectacol de Sandu Grecu.<br>Premiera 28.06.2019</br></p></td>
+	</tr>
+<tr>
+<td align="center"><img src="sat7.jpg" height="170" width="240"> </td>
+		<td><b>Happy End de Jeroen Van Den Berg</b><p>un spectacol de Vitalie Drucec.<br>Premiera 19.04.2019</br></p></td>
+	</tr>
+</table>
+
+
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        template : "<h1>Premiere</h1>"
+    };
+});
+
+</script>
+
+
+</body>
+</html>
