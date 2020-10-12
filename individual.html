@@ -2,24 +2,25 @@
 <html>
 <script src="angular.min.js"></script>
 <head>
+  <link rel="stylesheet" type="text/css" href="footer.css">
 	 <meta charset="UTF-8">
 <style type="text/css">
 	body{
-background-color:#B22222;
+background-color:#BC8F8F;
 background-image: url(satiricus.png),url(8.png),url(10.jpg);
-
 	background-repeat: no-repeat,no-repeat,no-repeat;
-  background-position:top center,bottom left, bottom right; 
+  background-position:top center,1% 92% , 99% 92%; 
+  margin: 0;
 	}
 
-
 nav{
-  display:inline-block;
-  margin:160px auto 45px;
+    display:block;
+  margin: 0px auto;
   background-color:white;
   box-shadow:0 1px 1px #ccc;
   border-radius:2px;
-  margin-left: 140px;
+  margin-top: 12%;
+  width: 80%;
 }
 
 nav a{
@@ -157,19 +158,28 @@ img {vertical-align: middle;}
 }
 
 h1{
-  margin-left: 360px;
+  text-align: center;
   font-family: "Papyrus",fantasy;
   font-size: 60px; 
   color: #00FF7F;
 }
 
 p{
-  margin-left: 460px;
+  text-align: center;
   font-family: "Papyrus",fantasy;
   font-size: 50px;
   color: yellow;
 }
 
+footer {
+     
+   width: 100%;
+  
+   background-color:#778899;
+   color: white;
+   text-align: center;
+
+}
 </style>
 
 
@@ -182,10 +192,11 @@ p{
 
       <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
       <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
-      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri</a>
        <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
-       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
-       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+       <a href="bilete.html" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Account</a>
+       <a href="todo.html" class="todo" ng-click="active='todo'">ToDo</a>
     </nav>
 <div ng-app = "myApp">
 <div ng-controller="myCtrl">
@@ -236,7 +247,16 @@ p{
 </tr>
 </table>
 </div>
+
+<div ng-include = "'footer.html'">
 </div>
+
+</div>
+
+
+
+
+
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $timeout) {

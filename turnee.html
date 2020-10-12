@@ -6,22 +6,23 @@
 	<title></title>
 <style type="text/css">
 	body{
-background-color:#B22222;
+background-color:#BC8F8F;
 background-image: url(satiricus.png),url(13.png);
 	/*ackground-size: 100%  100%;*/
 	background-repeat: no-repeat,no-repeat;
   background-position:top center, bottom left;
-  height: 900px;
+  height: 760px;
 	}
 
 
 nav{
-  display:inline-block;
-  margin:160px auto 45px;
+   display:block;
+  margin: 0px auto;
   background-color:white;
   box-shadow:0 1px 1px #ccc;
   border-radius:2px;
-  margin-left: 140px;
+  margin-top: 12%;
+  width: 80%;
 }
 
 nav a{
@@ -86,16 +87,17 @@ color:#696969;
 </style>
 </head>
 <body>
-	<nav class="{{active}}" ng-click="$event.preventDefault()">
+<nav class="{{active}}" ng-click="$event.preventDefault()">
 
       <!-- When a link in the menu is clicked, we set the active variable -->
 
       <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
       <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
-      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri</a>
        <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
-       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
-       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+       <a href="bilete.html" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Account</a>
+       <a href="todo.html" class="todo" ng-click="active='todo'">ToDo</a>
     </nav>
 <div ng-app="myApp" ng-controller="myCtrl">
 <div class="img1">

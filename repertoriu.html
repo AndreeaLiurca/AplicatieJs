@@ -2,26 +2,28 @@
 <html>
 <script src="angular.min.js"></script>
 <head>
+  <link rel="stylesheet" type="text/css" href="footer.css">
 	<meta charset="UTF-8">
 	<title></title>
 <style type="text/css">
 	body{
-background-color:#B22222;
+background-color:#BC8F8F;
 background-image: url(satiricus.png),url(11.png);
 	/*ackground-size: 100%  100%;*/
 	background-repeat: no-repeat,no-repeat;
 	background-position:top center,bottom right;
-	height: 980px;
+	height: 900px;
 	}
 
 
 nav{
-  display:inline-block;
-  margin:160px auto 45px;
+   display:block;
+  margin: 0px auto;
   background-color:white;
   box-shadow:0 1px 1px #ccc;
   border-radius:2px;
-  margin-left: 140px;
+  margin-top: 12%;
+  width: 80%;
 }
 
 nav a{
@@ -63,10 +65,7 @@ table,td{
 	width:45%;
   
 }
-img{
-	border:solid;
-	border-color: white;
-}
+
 p {
 	font-size: 15px;
 	color: #F5DEB3;
@@ -82,36 +81,44 @@ p {
 
       <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
       <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
-      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri</a>
        <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
-       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
-       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+       <a href="bilete.html" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Account</a>
+       <a href="todo.html" class="todo" ng-click="active='todo'">ToDo</a>
     </nav>
+<div ng-app="myApp">
+<div >
 
-<div  ng-app="myApp">
+<w3-test-directive>
+  
+</w3-test-directive>
 
-<w3-test-directive></w3-test-directive>
 
 </div>
-
+<img src="21.png" style="margin-left: 25%;" >
 <table>
 	<tr>
-		<td align="center"><img src="sat5.jpg" height="170" width="240"> </td>
+		<td align="center"><img src="sat5.jpg" height="170" width="240" style="border:solid;border-color:white;"> </td>
 		<td><b>Ce vraji a mai facut sotia mea? dupa John Tobias</b> <p>un spectacol de Mihai Panaitescu. <br>Premiera 01.11.2019</br></p></td>
 
 
 	</tr>
 <tr>
-<td align="center"><img src="sat6.jpg" height="170" width="240"> </td>
+<td align="center"><img src="sat6.jpg" height="170" width="240" style="border:solid;border-color:white";> </td>
 		<td><b>Buna dimineata, Taticule! de Jean Poirret</b><p>un spectacol de Sandu Grecu.<br>Premiera 28.06.2019</br></p></td>
 	</tr>
 <tr>
-<td align="center"><img src="sat7.jpg" height="170" width="240"> </td>
+<td align="center"><img src="sat7.jpg" height="170" width="240" style="border:solid;border-color:white";> </td>
 		<td><b>Happy End de Jeroen Van Den Berg</b><p>un spectacol de Vitalie Drucec.<br>Premiera 19.04.2019</br></p></td>
 	</tr>
 </table>
 
 
+
+<img src="3.png" style="margin-left: 25%;" >
+
+</div>
 
 <script>
 var app = angular.module("myApp", []);

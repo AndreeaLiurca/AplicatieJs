@@ -5,20 +5,21 @@
 	 <meta charset="UTF-8">
 <style type="text/css">
 	body{
-background-color:#B22222;
+background-color:#BC8F8F;
 background-image: url(satiricus.png),url(7.png);
 	/*ackground-size: 100%  100%;*/
 	background-repeat: no-repeat, no-repeat;
 background-position:top center, bottom center;
-  height:720px;
+ height: 567px;
   }
 nav{
-  display:inline-block;
-  margin:160px auto 45px;
+   display:block;
+  margin: 0px auto;
   background-color:white;
   box-shadow:0 1px 1px #ccc;
   border-radius:2px;
-  margin-left: 140px;
+  margin-top: 12%;
+  width: 80%;
 }
 
 nav a{
@@ -47,11 +48,11 @@ nav a:hover:not(.active) {
 }
   .apl{
 
-        display: flex;
+        display: block;
         flex-direction: column;
         justify-content: space-between;
         width: 70%;
-        margin: auto;
+        margin: 0px auto;
         text-align: center;
         background-image: url(3.jpg);
         background-size: 1000px,900px;
@@ -60,6 +61,7 @@ nav a:hover:not(.active) {
         font-family: fantasy;
         border-radius: 10px;
         box-shadow: 2px 2px 4px black;
+        margin-top: 5%;
         }
 
 
@@ -94,7 +96,16 @@ nav a:hover:not(.active) {
   cursor: pointer;
   display: inline-block;
 }
-
+button{
+  border-radius: 20px 50px;
+  font-size: 15px;
+  background-color: #d9b38c;
+}
+input[type=button]{
+    border-radius: 20px 50px;
+    font-size: 15px;
+    background-color: #d9b38c;
+}
 </style>
 	</head>
 	<body >
@@ -106,10 +117,11 @@ nav a:hover:not(.active) {
 
       <a href="individual.html" class="despre teatru" ng-click="active='despre teatru'">Despre Teatru </a>
       <a href="repertoriu.html" class="repertoriu" ng-click="active='repertoriu'">Repertoriu</a>
-      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri si Turnee</a>
+      <a href="turnee.html" class="festivaluri si turnee" ng-click="active='festivaluri si turnee'">Festivaluri</a>
        <a href="contacte.html" class="contacte" ng-click="active='contacte'">Contacte</a>
-       <a href="#" class="bilete" ng-click="active='bilete'">Bilete</a>
-       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Autentificare</a>
+       <a href="bilete.html" class="bilete" ng-click="active='bilete'">Bilete</a>
+       <a href="autentificare.html" class="autentificare" ng-click="active='autentificare'">Account</a>
+       <a href="todo.html" class="todo" ng-click="active='todo'">ToDo</a>
     </nav>
 <div ng-app="myApp" >
    <div ng-controller="myCtrl" class="apl" >
@@ -145,7 +157,7 @@ nav a:hover:not(.active) {
                Parola: <input type="password" ng-model="pass1"> </br> </br>
                <p ng-bind="error">{{error}}</p>
                <button ng-click="confirmaInregistrare()" ng-disabled="user1 == null || pass1 == null"> Confirma </button>
-               <input type="button" name="sterge" onclick="reset();"  value="Șterge">
+               <input type="button"   name="sterge" onclick="reset();"  value="Șterge">
            </form>
        </div>
 
